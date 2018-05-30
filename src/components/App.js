@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
+import FourZeroFour from './FourZeroFour';
 import { Container } from 'semantic-ui-react'
 
 class App extends Component {
@@ -17,7 +18,10 @@ class App extends Component {
 				<Fragment>
 					<Nav/>
 					<Container>
-						<Route path="/" exact component={Dashboard}/>
+						<Switch>
+							<Route path="/" exact component={Dashboard}/>
+							<Route component={FourZeroFour}/>
+						</Switch>
 					</Container>
 				</Fragment>
 			</Router>
