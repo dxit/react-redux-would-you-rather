@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Image, Header } from 'semantic-ui-react'
+import { Grid, Image, Header, Button, Icon } from 'semantic-ui-react'
 
 class FourZeroFour extends Component {
 	render() {
@@ -15,6 +15,13 @@ class FourZeroFour extends Component {
 						</Header>
 						<Header as="h3">It's just a 404 Error!</Header>
 						<p>What you’re looking for may have been misplaced in Long Term Memory.</p>
+						<p>&nbsp;</p>
+						<Button animated="fade">
+							<Button.Content visible>Back to Home</Button.Content>
+							<Button.Content hidden>
+								<Icon name="home" />
+							</Button.Content>
+						</Button>
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>
