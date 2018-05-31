@@ -5,8 +5,8 @@ import { Header, Tab } from 'semantic-ui-react'
 class Dashboard extends Component {
 	render() {
 		const panes = [
-			{ menuItem: 'Answered', render: () => <Tab.Pane attached={false}>This is a test</Tab.Pane> },
-			{ menuItem: 'Unanswered', render: () => <Tab.Pane attached={false}>This is a test</Tab.Pane> }
+			{ menuItem: 'Unanswered', render: () => <Tab.Pane attached={false}>This is a test</Tab.Pane> },
+			{ menuItem: 'Answered', render: () => <Tab.Pane attached={false}>This is a test</Tab.Pane> }
 		];
 
 		return (
@@ -18,4 +18,12 @@ class Dashboard extends Component {
 	}
 }
 
-export default connect()(Dashboard);
+function mapStateToProps({questions}) {
+	return {
+		questionsIds: Object.keys(questions).sort((a,b) => {
+			questions[b].timestamp - questions[a].timestamp
+		})
+	}
+}
+
+export default connect(mapStateToProps)(Dashboard);

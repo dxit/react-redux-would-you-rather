@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LoadingBar from 'react-redux-loading-bar';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { handleInitialData } from '../actions/shared';
+import PrivateRoute from './PrivateRoute';
 import Nav from './Nav';
+import Login from './Login';
+import Logout from './Logout';
 import Dashboard from './Dashboard';
+import Leaderboard from './Leaderboard';
 import FourZeroFour from './FourZeroFour';
 import { Container } from 'semantic-ui-react'
 
@@ -16,17 +21,32 @@ class App extends Component {
 		return (
 			<Router>
 				<Fragment>
+					<LoadingBar/>
 					<Nav/>
-					<Container>
-						<Switch>
-							<Route path="/" exact component={Dashboard}/>
-							<Route component={FourZeroFour}/>
-						</Switch>
-					</Container>
+					{this.props.loading === true
+						? null
+						:
+						<Container>
+							<Switch>
+								<PrivateRoute path="/" exact component={Dashboard} />
+								<PrivateRoute path="/leaderboard" exact component={Leaderboard} />
+								<Route path="/login" component={Login}/>
+								<Route path="/logout" component={Logout}/>
+								<Route component={FourZeroFour}/>
+							</Switch>
+						</Container>
+					}
 				</Fragment>
+
 			</Router>
 		);
 	}
 }
 
-export default connect()(App);
+function mapStateToProps({loadingBar}) {
+	return {
+		loading: loadingBar.default === 1,
+	}
+}
+
+export default connect(mapStateToProps)(App);

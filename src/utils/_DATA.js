@@ -2,7 +2,7 @@ let users = {
 	sarahedo: {
 		id: 'sarahedo',
 		name: 'Sarah Edo',
-		avatarURL: 'http://webneel.com/daily/sites/default/files/images/daily/06-2013/10-best-portrait-photography.jpg',
+		avatarURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUT44kY1KVApz5DY3C0nU41fb4h-bFa_ZWEfq18jkN6qjgVVZCKw',
 		answers: {
 			"8xf0y6ziyjabvozdd253nd": 'optionOne',
 			"6ni6ok3ym7mf1p33lnez": 'optionOne',
