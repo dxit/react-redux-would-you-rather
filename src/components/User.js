@@ -19,7 +19,7 @@ class User extends Component {
 				<Card.Content>
 					<Image floated="right" circular size="tiny" src={user.avatarURL}/>
 					<Card.Header>
-						{user.name}
+						{user.name}{user.id === authedUser && <span> (You)</span>}
 					</Card.Header>
 					<Card.Meta>
 						@{user.id}
@@ -28,12 +28,12 @@ class User extends Component {
 					<Card.Description>
 						<Statistic.Group widths="two">
 							<Statistic>
-								<Statistic.Value>{Object.keys(user.answers).length}</Statistic.Value>
-								<Statistic.Label>Answers</Statistic.Label>
-							</Statistic>
-							<Statistic>
 								<Statistic.Value>{user.questions.length}</Statistic.Value>
 								<Statistic.Label>Questions</Statistic.Label>
+							</Statistic>
+							<Statistic>
+								<Statistic.Value>{Object.keys(user.answers).length}</Statistic.Value>
+								<Statistic.Label>Answers</Statistic.Label>
 							</Statistic>
 						</Statistic.Group>
 					</Card.Description>
