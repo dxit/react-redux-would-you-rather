@@ -9,6 +9,49 @@ This is the second project of the [React Developer Nanodegree](https://eu.udacit
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+# How It Works
+#### App Functionality
+The person using your application have a way of impersonating/logging in as an existing user.
+
+Information about the logged in user appears on the top right of the page. If someone tries to navigate anywhere by entering the address in the address bar, the user is asked to sign in and then the requested page is shown. The application allows the user to log out and log back in.
+
+Once the user logs in, the user is able to toggle between his/her answered and unanswered polls on the home page, which is located at the root. The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom). The unanswered questions are shown by default, and the name of the logged in user is visible on the page in the top right corner.
+
+Each polling question has a link to the details of that poll. The details of each poll is available at `questions/:question_id`.
+
+When a poll is clicked on the home page, the following is shown:
+
+- Text “Would You Rather”;
+- Avatar of the user who posted the polling question; and
+- Two options.
+
+For answered polls, each of the two options contains the following:
+
+- Text of the option;
+- Number of people who voted for that option; and
+- Percentage of people who voted for that option.
+
+The option selected by the logged-in user is clearly marked.
+
+Since we want to make sure our application creates a good user experience, the application shows a 404 page if the user is trying to access a poll that does not exist. (Please keep in mind that newly created polls will not be accessible at their url because of the way the backend is set up in this application.) It also display a navigation bar so that the user can easily navigate anywhere in the application.
+
+So what happens when someone votes in a poll? Upon voting in a poll, all of the information of an answered poll are displayed. The user’s response are recorded and clearly visible on the poll details page. Users can only vote once per poll; they aren’t allowed to change their answer after they’ve voted -- no cheating allowed 😁! When the user comes back to the home page, the polling question appears in the “Answered” column.
+
+It would be no fun to vote in polls if we couldn’t post our own questions! The form for posting new polling questions is available at the `/add` route. The application shows the text “Would You Rather” and have a form for creating two options. Upon submitting the form, a new poll is created, the user it taken to the home page, and the new polling question appears in the correct category on the home page.
+
+But how can we know how many questions each user has asked and answered? Let’s get some healthy competition going here! The application have a leaderboard that’s available at the `/leaderboard` route. Each entry on the leaderboard contains the following:
+
+- User’s name;
+- User’s picture;
+- Number of questions the user asked; and
+- Number of questions the user answered
+
+Users are ordered in descending order based on the sum of the number of questions they’ve asked and the number of questions they’ve answered. The more questions you ask and answer, the higher up you move.
+
+The user are able to navigate to the leaderboard, to a specific question, and to the form that allows the user to create a new poll both from within the app and by typing in the address into the address bar. To make sure we’re showing the data that is relevant to the user, the application requires the user to be signed in order to access those pages.
+
+Enjoy!
+
 ## Data
 
 There are two types of objects stored in our database:
@@ -97,7 +140,3 @@ Your code will talk to the database via 4 methods:
 | authedUser | String | The id of the user who answered the question|
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
