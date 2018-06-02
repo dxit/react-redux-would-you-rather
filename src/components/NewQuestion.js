@@ -24,12 +24,12 @@ class NewQuestion extends Component {
 
 		dispatch(handleAddQuestion({optionOneText, optionTwoText}))
 
-		// this.setState({
-		// 	optionOneText: '',
-		// 	optionTwoText: ''
-		// });
-		//
-		// this.props.history.push(`/`);
+		this.setState({
+			optionOneText: '',
+			optionTwoText: ''
+		});
+
+		this.props.history.push(`/`);
 	};
 
 	render() {
