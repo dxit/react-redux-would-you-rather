@@ -1,4 +1,9 @@
+import { saveQuestion, saveQuestionAnswer } from '../utils/api';
+import { showLoading, hideLoading } from 'react-redux-loading';
+
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
 export function receiveQuestions(questions) {
 	return {
@@ -6,3 +11,45 @@ export function receiveQuestions(questions) {
 		questions
 	}
 }
+
+export function handleAddQuestion(params) {
+	return (dispatch, getState) => {
+		const {authedUser} = getState();
+		const {optionOneText, optionTwoText} = params;
+
+		dispatch(showLoading());
+
+		return saveQuestion({author: authedUser, optionOneText, optionTwoText})
+			.then((question) => dispatch(addQuestion(question)))
+			.then(() => dispatch(hideLoading()))
+	}
+}
+
+function addQuestion(question) {
+	return {
+		type: ADD_QUESTION,
+		question
+	}
+}
+
+// export function handleAddAnswer(qid, answer)  {
+// 	return (dispatch, getState) => {
+// 		const {authedUser} = getState();
+// 		const info = {qid, answer, authedUser};
+//
+// 		return saveQuestionAnswer(info)
+// 			.catch((e) => {
+// 				console.warn('Error', e);
+// 				dispatch(addQuestionAnswer(info));
+// 				alert('There was an error linking the tweet. Try again.');
+// 			})
+// 	}
+// }
+//
+// export function addQuestionAnswer(info) {
+// 	return {
+// 		type: ADD_QUESTION_ANSWER,
+// 		questionAnswer
+// 	}
+// }
+//

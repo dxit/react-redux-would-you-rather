@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { loginUser } from '../actions/authedUser';
 import { Button, Card, Image, Statistic } from 'semantic-ui-react';
 
@@ -13,16 +12,7 @@ class User extends Component {
 	};
 
 	render() {
-		console.log(this.props);
-		const {user, authedUser, isLeaderboard, location} = this.props;
-
-		// const {from} = location.state || {from: {pathname: '/'}};
-		//
-		// if (authedUser !== null) {
-		// 	return (
-		// 		<Redirect to={from}/>
-		// 	);
-		// }
+		const {user, authedUser, isLeaderboard} = this.props;
 
 		return (
 			<Card centered>

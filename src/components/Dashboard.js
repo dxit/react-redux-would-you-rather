@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header, Tab } from 'semantic-ui-react'
+import Question from './Question';
+import { Card, Header, Tab } from 'semantic-ui-react'
 
 class Dashboard extends Component {
 	render() {
+		const {unansweredQuestionsIds, answeredQuestionsIds} = this.props;
+
 		const panes = [
-			{ menuItem: 'Unanswered', render: () => <Tab.Pane attached={false}>This is a test</Tab.Pane> },
-			{ menuItem: 'Answered', render: () => <Tab.Pane attached={false}>This is a test</Tab.Pane> }
+			{
+				menuItem: 'Unanswered', render: () =>
+					<Tab.Pane attached={false}>
+						<Card.Group>
+							{unansweredQuestionsIds.map((id) => <Question key={id} id={id}/>)}
+						</Card.Group>
+					</Tab.Pane>
+			},
+			{
+				menuItem: 'Answered', render: () =>
+					<Tab.Pane attached={false}>
+						{answeredQuestionsIds.map((id) => <Question key={id} id={id}/>)}
+					</Tab.Pane>
+			}
 		];
 
 		return (
 			<div>
 				<Header as="h2">Dashboard</Header>
-				<Tab menu={{ secondary:true, pointing: true }} panes={panes} />
+				<Tab menu={{secondary: true, pointing: true}} panes={panes}/>
 			</div>
 		)
 	}
 }
 
-function mapStateToProps({questions}) {
+function mapStateToProps({questions, authedUser}) {
 	return {
-		questionsIds: Object.keys(questions).sort((a,b) => {
-			questions[b].timestamp - questions[a].timestamp
-		})
+		unansweredQuestionsIds: Object.keys(questions)
+			.filter((i) => !questions[i].optionOne.votes.includes(authedUser) && !questions[i].optionTwo.votes.includes(authedUser))
+			.sort((a, b) => questions[b].timestamp - questions[a].timestamp),
+		answeredQuestionsIds: Object.keys(questions)
+			.filter((i) => questions[i].optionOne.votes.includes(authedUser) || questions[i].optionTwo.votes.includes(authedUser))
+			.sort((a, b) => questions[b].timestamp - questions[a].timestamp)
 	}
 }
 
