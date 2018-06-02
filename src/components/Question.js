@@ -6,16 +6,16 @@ import { camelize } from '../utils/helpers';
 import { Card, Message, Icon, Feed, Grid, Segment, Divider, Button, Statistic } from 'semantic-ui-react'
 
 class Question extends Component {
-	goToQuestionPage(e, id) {
+	goToQuestionPage = (e, id) => {
 		e.preventDefault();
 		this.props.history.push(`/questions/${id}`);
-	}
+	};
 
-	handleSubmit(e, answer) {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		const {dispatch, question} = this.props;
 
-		// dispatch(handleAddAnswer(question.id, answer))
+		dispatch(handleAddAnswer(question.id, camelize(e.target.textContent)));
 	};
 
 	render() {
@@ -50,9 +50,9 @@ class Question extends Component {
 							?
 							<Card.Content className="center aligned">
 								<Button.Group>
-									<Button color="teal" onClick={(e) => this.handleSubmit(e, camelize(e.target.textContent))}>Option One</Button>
+									<Button color="teal" onClick={this.handleSubmit}>Option One</Button>
 									<Button.Or/>
-									<Button color="teal" onClick={(e) => this.handleSubmit(e, camelize(e.target.textContent))}>Option Two</Button>
+									<Button color="teal" onClick={this.handleSubmit}>Option Two</Button>
 								</Button.Group>
 							</Card.Content>
 							:
@@ -61,15 +61,15 @@ class Question extends Component {
 									<Icon name="thumbs up outline"></Icon>
 									<Message.Content>
 										<Message.Header>Well done!</Message.Header>
-										You already voted for the {authedHasAnswered}
+										You voted for the {authedHasAnswered}
 									</Message.Content>
 								</Message>
 								<Statistic.Group widths="two">
-									<Statistic>
+									<Statistic color={authedHasAnswered === 'Option One' && "green"}>
 										<Statistic.Value>{stats.percentVotesOptionOne}%</Statistic.Value>
 										<Statistic.Label>voted by {stats.votesOptionOne} users</Statistic.Label>
 									</Statistic>
-									<Statistic>
+									<Statistic color={authedHasAnswered === 'Option Two' && "green"}>
 										<Statistic.Value>{stats.percentVotesOptionTwo}%</Statistic.Value>
 										<Statistic.Label>voted by {stats.votesOptionTwo} users</Statistic.Label>
 									</Statistic>

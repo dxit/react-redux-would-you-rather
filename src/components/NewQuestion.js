@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
-import { Header, Button, Form } from 'semantic-ui-react'
+import { Header, Form } from 'semantic-ui-react'
 
 class NewQuestion extends Component {
 	state = {
@@ -22,7 +22,7 @@ class NewQuestion extends Component {
 		const {optionOneText, optionTwoText} = this.state;
 		const {dispatch} = this.props;
 
-		dispatch(handleAddQuestion({optionOneText, optionTwoText}))
+		dispatch(handleAddQuestion({optionOneText, optionTwoText}));
 
 		this.setState({
 			optionOneText: '',
@@ -41,7 +41,7 @@ class NewQuestion extends Component {
 				<Form loading={loading} onSubmit={this.handleSubmit}>
 					<Form.Group unstackable widths={2}>
 						<Form.Input label="Option One" name="optionOneText" value={optionOneText} placeholder="Add the Option One" onChange={this.handleChanges} />
-						<Form.Input label="Option One" name="optionTwoText" value={optionTwoText} placeholder="Add the Option Two" onChange={this.handleChanges} />
+						<Form.Input label="Option Two" name="optionTwoText" value={optionTwoText} placeholder="Add the Option Two" onChange={this.handleChanges} />
 					</Form.Group>
 					<Form.Group unstackable widths={1}>
 						<Form.Button content="Add New Question" disabled={optionOneText === '' || optionTwoText === ''} />

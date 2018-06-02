@@ -32,24 +32,28 @@ function addQuestion(question) {
 	}
 }
 
-// export function handleAddAnswer(qid, answer)  {
-// 	return (dispatch, getState) => {
-// 		const {authedUser} = getState();
-// 		const info = {qid, answer, authedUser};
-//
-// 		return saveQuestionAnswer(info)
-// 			.catch((e) => {
-// 				console.warn('Error', e);
-// 				dispatch(addQuestionAnswer(info));
-// 				alert('There was an error linking the tweet. Try again.');
-// 			})
-// 	}
-// }
-//
-// export function addQuestionAnswer(info) {
-// 	return {
-// 		type: ADD_QUESTION_ANSWER,
-// 		questionAnswer
-// 	}
-// }
-//
+export function handleAddAnswer(qid, answer)  {
+	return (dispatch, getState) => {
+		const {authedUser} = getState();
+		const info = {qid, answer, authedUser};
+
+		dispatch(addQuestionAnswer(info));
+
+		return saveQuestionAnswer(info)
+			.catch((e) => {
+				console.warn('Error', e);
+				dispatch(addQuestionAnswer(info));
+				alert('There was an error linking the tweet. Try again.');
+			})
+	}
+}
+
+export function addQuestionAnswer({authedUser, qid, answer}) {
+	return {
+		type: ADD_QUESTION_ANSWER,
+		authedUser,
+		qid,
+		answer
+	}
+}
+
