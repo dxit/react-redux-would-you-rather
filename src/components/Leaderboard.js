@@ -9,7 +9,7 @@ class Leaderboard extends Component {
 
 		return (
 			<Fragment>
-				<Header as="h2">Leaderboard</Header>
+				<Header as='h2'>Leaderboard</Header>
 				<p>&nbsp;</p>
 				<Card.Group>
 					{usersIds.map((id) => (

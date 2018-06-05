@@ -30,12 +30,12 @@ class App extends Component {
 						:
 						<Container>
 							<Switch>
-								<PrivateRoute path="/" exact component={Dashboard} />
-								<PrivateRoute path="/leaderboard" exact component={Leaderboard} />
-								<PrivateRoute path="/questions/:id" exact component={QuestionPage} />
-								<PrivateRoute path="/add" exact component={NewQuestion} />
-								<Route path="/login" component={Login}/>
-								<Route path="/logout" component={Logout}/>
+								<PrivateRoute path='/' exact component={Dashboard} />
+								<PrivateRoute path='/leaderboard' exact component={Leaderboard} />
+								<PrivateRoute path='/questions/:id' exact component={QuestionPage} />
+								<PrivateRoute path='/add' exact component={NewQuestion} />
+								<Route path='/login' component={Login}/>
+								<Route path='/logout' component={Logout}/>
 								<Route component={FourZeroFour}/>
 							</Switch>
 						</Container>

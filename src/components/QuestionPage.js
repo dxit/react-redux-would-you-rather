@@ -17,14 +17,14 @@ class QuestionPage extends Component {
 
 		return (
 			<Fragment>
-				<Header as="h2" textAlign="center">Would You Rather</Header>
+				<Header as='h2' textAlign='center'>Would You Rather</Header>
 
 				<Question id={question.id} details={true}/>
 
-				<Button as={Link} to="/" animated="fade">
+				<Button as={Link} to='/' animated='fade'>
 					<Button.Content visible>Back to Home</Button.Content>
 					<Button.Content hidden>
-						<Icon name="home"/>
+						<Icon name='home'/>
 					</Button.Content>
 				</Button>
 			</Fragment>

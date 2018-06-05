@@ -1,31 +1,35 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { Menu, Image } from 'semantic-ui-react';
+import { Menu, Image, Icon } from 'semantic-ui-react';
 
 
 const Nav = (props) => {
 	return (
 		<Menu stackable>
-			<Menu.Item as={NavLink} to="/" exact activeClassName="active">
+			<Menu.Item as={NavLink} to='/' exact activeClassName='active'>
+				<Icon name='home' />
 				Home
 			</Menu.Item>
-			<Menu.Item as={NavLink} to="/add" activeClassName="active">
-				Add Question
-			</Menu.Item>
-			<Menu.Item as={NavLink} to="/leaderboard" activeClassName="active">
+			<Menu.Item as={NavLink} to='/leaderboard' activeClassName='active'>
+				<Icon name='dashboard' />
 				Leaderboard
 			</Menu.Item>
-			<Menu.Menu position="right">
+			<Menu.Item as={NavLink} to='/add' activeClassName='active'>
+				<Icon name='plus circle' />
+				Add Question
+			</Menu.Item>
+			<Menu.Menu position='right'>
 				{props.authedUser !== null &&
 				<Fragment>
 					<Menu.Item>
 						<Fragment>
-							<Image src={props.authedUser.avatarURL} size="mini" avatar circular/>
+							<Image src={props.authedUser.avatarURL} size='mini' avatar circular/>
 							<span>{props.authedUser.name}</span>
 						</Fragment>
 					</Menu.Item>
-					<Menu.Item as={NavLink} to="/logout" activeClassName="active">
+					<Menu.Item as={NavLink} to='/logout' activeClassName='active'>
+						<Icon name='sign out' />
 						Logout
 					</Menu.Item>
 				</Fragment>

@@ -4,3 +4,15 @@ export function camelize(str) {
 		return index === 0 ? match.toLowerCase() : match.toUpperCase();
 	});
 }
+
+export function formatUser({avatarURL, name}) {
+	const unique = new Date().getMilliseconds();
+
+	return {
+		id: `${camelize(name).toLowerCase()}${unique}`,
+		name,
+		avatarURL,
+		answers: {},
+		questions: []
+	}
+}

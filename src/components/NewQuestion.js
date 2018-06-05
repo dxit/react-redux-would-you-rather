@@ -6,8 +6,7 @@ import { Header, Form } from 'semantic-ui-react'
 class NewQuestion extends Component {
 	state = {
 		optionOneText: '',
-		optionTwoText: '',
-		loading: false
+		optionTwoText: ''
 	};
 
 	handleChanges = (e, {name, value}) => {
@@ -33,18 +32,18 @@ class NewQuestion extends Component {
 	};
 
 	render() {
-		const {optionOneText, optionTwoText, loading} = this.state;
+		const {optionOneText, optionTwoText} = this.state;
 
 		return (
 			<Fragment>
-				<Header as="h2" textAlign="center">Would You Rather</Header>
-				<Form loading={loading} onSubmit={this.handleSubmit}>
+				<Header as='h2' textAlign='center'>Would You Rather</Header>
+				<Form onSubmit={this.handleSubmit}>
 					<Form.Group unstackable widths={2}>
-						<Form.Input label="Option One" name="optionOneText" value={optionOneText} placeholder="Add the Option One" onChange={this.handleChanges} />
-						<Form.Input label="Option Two" name="optionTwoText" value={optionTwoText} placeholder="Add the Option Two" onChange={this.handleChanges} />
+						<Form.Input label='Option One' name='optionOneText' value={optionOneText} placeholder='Add the Option One' onChange={this.handleChanges} />
+						<Form.Input label='Option Two' name='optionTwoText' value={optionTwoText} placeholder='Add the Option Two' onChange={this.handleChanges} />
 					</Form.Group>
 					<Form.Group unstackable widths={1}>
-						<Form.Button content="Add New Question" disabled={optionOneText === '' || optionTwoText === ''} />
+						<Form.Button content='Add New Question' disabled={optionOneText === '' || optionTwoText === ''} />
 					</Form.Group>
 				</Form>
 			</Fragment>

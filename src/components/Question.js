@@ -22,17 +22,17 @@ class Question extends Component {
 		const {question, author, authedUser, details, authedHasAnswered, stats} = this.props;
 
 		return (
-			<Card fluid color="teal">
+			<Card fluid color='teal'>
 				<Card.Description>
 					<Grid columns={2} relaxed>
 						<Grid.Column>
-							<Segment basic textAlign="center">
+							<Segment basic textAlign='center'>
 								{question.optionOne.text}
 							</Segment>
 						</Grid.Column>
 						<Divider vertical>Or</Divider>
 						<Grid.Column>
-							<Segment basic textAlign="center">
+							<Segment basic textAlign='center'>
 								{question.optionTwo.text}
 							</Segment>
 						</Grid.Column>
@@ -48,28 +48,28 @@ class Question extends Component {
 					<Fragment>
 						{authedHasAnswered === false
 							?
-							<Card.Content className="center aligned">
+							<Card.Content className='center aligned'>
 								<Button.Group>
-									<Button color="teal" onClick={this.handleSubmit}>Option One</Button>
+									<Button color='teal' onClick={this.handleSubmit}>Option One</Button>
 									<Button.Or/>
-									<Button color="teal" onClick={this.handleSubmit}>Option Two</Button>
+									<Button color='teal' onClick={this.handleSubmit}>Option Two</Button>
 								</Button.Group>
 							</Card.Content>
 							:
 							<Card.Content>
-								<Message icon color="green">
-									<Icon name="thumbs up outline"></Icon>
+								<Message icon color='green'>
+									<Icon name='thumbs up outline'></Icon>
 									<Message.Content>
 										<Message.Header>Well done!</Message.Header>
 										You voted for the {authedHasAnswered}
 									</Message.Content>
 								</Message>
-								<Statistic.Group widths="two">
-									<Statistic color={authedHasAnswered === 'Option One' && "green"}>
+								<Statistic.Group widths='two'>
+									<Statistic color={authedHasAnswered === 'Option One' ? 'green' : 'black'}>
 										<Statistic.Value>{stats.percentVotesOptionOne}%</Statistic.Value>
 										<Statistic.Label>voted by {stats.votesOptionOne} users</Statistic.Label>
 									</Statistic>
-									<Statistic color={authedHasAnswered === 'Option Two' && "green"}>
+									<Statistic color={authedHasAnswered === 'Option Two' ? 'green' : 'black'}>
 										<Statistic.Value>{stats.percentVotesOptionTwo}%</Statistic.Value>
 										<Statistic.Label>voted by {stats.votesOptionTwo} users</Statistic.Label>
 									</Statistic>

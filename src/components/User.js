@@ -17,7 +17,7 @@ class User extends Component {
 		return (
 			<Card centered>
 				<Card.Content>
-					<Image floated="right" circular size="tiny" src={user.avatarURL}/>
+					<Image floated='right' circular size='tiny' src={user.avatarURL}/>
 					<Card.Header>
 						{user.name}{user.id === authedUser && <span> (You)</span>}
 					</Card.Header>
@@ -26,7 +26,7 @@ class User extends Component {
 					</Card.Meta>
 					{isLeaderboard === true &&
 					<Card.Description>
-						<Statistic.Group widths="two">
+						<Statistic.Group widths='two'>
 							<Statistic>
 								<Statistic.Value>{user.questions.length}</Statistic.Value>
 								<Statistic.Label>Questions</Statistic.Label>
