@@ -1,3 +1,5 @@
+import { camelize } from './helpers';
+
 let users = {
 	sarahedo: {
 		id: 'sarahedo',
@@ -198,5 +200,32 @@ export function _saveQuestionAnswer({authedUser, qid, answer}) {
 
 			res()
 		}, 500)
+	})
+}
+
+function formatUser({avatarURL, name}) {
+	const unique = new Date().getMilliseconds();
+
+	return {
+		id: `${camelize(name).toLowerCase()}${unique}`,
+		name,
+		avatarURL,
+		answers: {},
+		questions: []
+	}
+}
+
+export function _saveUser(user) {
+	return new Promise((res, rej) => {
+		const formattedUser = formatUser(user);
+
+		setTimeout(() => {
+			users = {
+				...users,
+				[formattedUser.id]: formattedUser
+			};
+
+			res(formattedUser)
+		}, 1000)
 	})
 }

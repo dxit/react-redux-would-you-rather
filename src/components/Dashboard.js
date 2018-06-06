@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
 import { Card, Header, Tab, Message } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 class Dashboard extends Component {
+	static propTypes = {
+		// from connect
+		dispatch: PropTypes.func.isRequired,
+		// from mapStateToProps
+		unansweredQuestionsIds: PropTypes.array.isRequired,
+		answeredQuestionsIds: PropTypes.array.isRequired
+	};
+
 	render() {
 		const {unansweredQuestionsIds, answeredQuestionsIds} = this.props;
 

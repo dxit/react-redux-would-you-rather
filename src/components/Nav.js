@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { Menu, Image, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 
 const Nav = (props) => {
@@ -37,6 +38,13 @@ const Nav = (props) => {
 			</Menu.Menu>
 		</Menu>
 	)
+};
+
+Nav.propTypes = {
+	// from connect
+	dispatch: PropTypes.func.isRequired,
+	// from mapStateToProps
+	authedUser: PropTypes.object
 };
 
 function mapStateToProps({authedUser, users}) {

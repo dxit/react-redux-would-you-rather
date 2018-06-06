@@ -4,8 +4,22 @@ import { withRouter } from 'react-router-dom';
 import { handleAddAnswer } from '../actions/questions';
 import { camelize } from '../utils/helpers';
 import { Card, Message, Icon, Feed, Grid, Segment, Divider, Button, Statistic } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 class Question extends Component {
+	static propTypes = {
+		// from connect
+		id: PropTypes.string.isRequired,
+		dispatch: PropTypes.func.isRequired,
+		// from mapStateToProps
+		question: PropTypes.object,
+		author: PropTypes.object.isRequired,
+		details: PropTypes.bool.isRequired,
+		authedUser: PropTypes.string.isRequired,
+		authedHasAnswered: PropTypes.string,
+		stats: PropTypes.object.isRequired,
+	};
+
 	goToQuestionPage = (e, id) => {
 		e.preventDefault();
 		this.props.history.push(`/questions/${id}`);
@@ -46,7 +60,7 @@ class Question extends Component {
 					</Card.Content>
 					:
 					<Fragment>
-						{authedHasAnswered === false
+						{authedHasAnswered === null
 							?
 							<Card.Content className='center aligned'>
 								<Button.Group>
@@ -106,7 +120,7 @@ function mapStateToProps({questions, users, authedUser}, {id, details}) {
 			return 'Option One';
 		else if (question.optionTwo.votes.includes(authedUser))
 			return 'Option Two';
-		else return false;
+		else return null;
 	};
 
 	const createStats = () => {

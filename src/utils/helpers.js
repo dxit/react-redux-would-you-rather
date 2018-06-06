@@ -5,14 +5,3 @@ export function camelize(str) {
 	});
 }
 
-export function formatUser({avatarURL, name}) {
-	const unique = new Date().getMilliseconds();
-
-	return {
-		id: `${camelize(name).toLowerCase()}${unique}`,
-		name,
-		avatarURL,
-		answers: {},
-		questions: []
-	}
-}

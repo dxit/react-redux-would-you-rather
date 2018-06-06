@@ -44,7 +44,8 @@ class ImageInput extends React.Component {
 	static propTypes = {
 		className: PropTypes.string,
 		name: PropTypes.string,
-		maxHeight: PropTypes.number
+		maxHeight: PropTypes.number,
+		handleChanges: PropTypes.func.isRequired
 	};
 
 	state = {

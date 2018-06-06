@@ -4,8 +4,16 @@ import User from './User';
 import ImageInput from './ImageInput';
 import { handleAddUser } from '../actions/users';
 import { Header, Card, Divider, Form, Grid } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 class Login extends Component {
+	static propTypes = {
+		// from connect
+		dispatch: PropTypes.func.isRequired,
+		// from mapStateToProps
+		usersIds: PropTypes.array.isRequired
+	};
+
 	state = {
 		avatarURL: 'https://www.avatarys.com/var/albums/Cool-Avatars/Cartoons-Avatars/funny-avatar_by-avatarys_cartoon-avatar-by-avatarys.jpg?m=1432822352',
 		name: ''

@@ -2,8 +2,16 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
 import { Header, Form } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 class NewQuestion extends Component {
+	static propTypes = {
+		// from connect
+		dispatch: PropTypes.func.isRequired,
+		// from mapStateToProps
+		authedUser: PropTypes.string.isRequired
+	};
+
 	state = {
 		optionOneText: '',
 		optionTwoText: ''

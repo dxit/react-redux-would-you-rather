@@ -13,8 +13,16 @@ import QuestionPage from './QuestionPage';
 import NewQuestion from './NewQuestion';
 import FourZeroFour from './FourZeroFour';
 import { Container } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 class App extends Component {
+	static propTypes = {
+		// from connect
+		dispatch: PropTypes.func.isRequired,
+		// from mapStateToProps
+		loading: PropTypes.bool.isRequired
+	};
+
 	componentDidMount() {
 		this.props.dispatch(handleInitialData());
 	}

@@ -2,8 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authedUser';
 import { Button, Card, Image, Statistic } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 class User extends Component {
+	static propTypes = {
+		// from connect
+		id: PropTypes.string.isRequired,
+		dispatch: PropTypes.func.isRequired,
+		// from mapStateToProps
+		user: PropTypes.object.isRequired,
+		authedUser: PropTypes.string,
+		isLeaderboard: PropTypes.bool.isRequired
+	};
+
 	handleLogin = (e, id) => {
 		e.preventDefault();
 		const {dispatch} = this.props;
