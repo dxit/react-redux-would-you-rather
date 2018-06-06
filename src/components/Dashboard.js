@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
-import { Card, Header, Tab, Message } from 'semantic-ui-react'
+import { Header, Tab, Message } from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 
 class Dashboard extends Component {
@@ -20,16 +20,14 @@ class Dashboard extends Component {
 			{
 				menuItem: 'Unanswered', render: () =>
 					<Tab.Pane attached={false}>
-						<Card.Group>
-							{unansweredQuestionsIds.length === 0 &&
-							<Message
-								icon='inbox'
-								header='No Questions'
-								content='You have answered all the questions'
-							/>
-							}
-							{unansweredQuestionsIds.map((id) => <Question key={id} id={id}/>)}
-						</Card.Group>
+						{unansweredQuestionsIds.length === 0 &&
+						<Message
+							icon='inbox'
+							header='No Questions'
+							content='You have answered all the questions'
+						/>
+						}
+						{unansweredQuestionsIds.map((id) => <Question key={id} id={id}/>)}
 					</Tab.Pane>
 			},
 			{
