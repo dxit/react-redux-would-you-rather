@@ -7,10 +7,33 @@ This is the second project of the [React Developer Nanodegree](https://eu.udacit
 * [Would You Rather](https://github.com/dxit/react-redux-would-you-rather) — React & Redux Project
 * TBD — React Native Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+## How It Works
+### Instruction to load the app
 
-# How It Works
-#### App Functionality
+The project uses Node.js and the Create-React-App starter. If you do not have Node >= 6.x installed, you can download it here: [Node.js](https://nodejs.org/en/download/)
+
+Once Node is installed, navigate to the directory where you want to store the app
+
+```
+git clone https://github.com/sarah-maris/reactnd-project-myreads.git
+npm install
+```
+or
+```
+yarn install
+```
+Once all of the dependencies have been installed you can launch the app with
+
+```
+npm start
+```
+or
+```
+yarn start
+```
+A new browser window should automatically open displaying the app. If it doesn't, navigate to http://localhost:3000/ in your browser
+
+### App Functionality
 The person using your application have a way of impersonating/logging in as an existing user.
 
 Information about the logged in user appears on the top right of the page. If someone tries to navigate anywhere by entering the address in the address bar, the user is asked to sign in and then the requested page is shown. The application allows the user to log out and log back in.
