@@ -115,12 +115,13 @@ Voting options are attached to questions. They include:
 | votes             | Array | A list that contains the id of each user who voted for that option|
 | text                | String | The text of the option |
 
-Your code will talk to the database via 4 methods:
+Your code will talk to the database via 5 methods:
 
 * `_getUsers()`
 * `_getQuestions()`
 * `_saveQuestion(question)`
 * `_saveQuestionAnswer(object)`
+* `_saveUser(object)`
 
 1) `_getUsers()` Method
 
@@ -163,3 +164,13 @@ Your code will talk to the database via 4 methods:
 | authedUser | String | The id of the user who answered the question|
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
+
+5) `_saveUser(object)` Method
+
+*Description*: Save the new user in the database
+*Parameters*: Object that contains the following properties: `avatarURL` and `name`. More details about these properties:
+
+| Attribute | Type | Description |
+|-----------------|------------------|-------------------|
+| avatarURL | String | The URL of the avatar image |
+| name | String | The name (or username) of the new user|
