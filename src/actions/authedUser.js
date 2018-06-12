@@ -1,5 +1,4 @@
-export const LOGIN_USER = 'LOGIN_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
+import { LOGIN_USER, LOGOUT_USER } from './types';
 
 export function loginUser(id)   {
 	return {
